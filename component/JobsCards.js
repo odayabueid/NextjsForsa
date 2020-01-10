@@ -60,7 +60,7 @@ class JobsCards extends Component {
   render() {
     return (
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{padding:"0px", minHeight: "680px", marginTop: "15px" ,backgroundColor: "#fff" }}>
-        <header style={{ backgroundColor: "#eb751d", minHeight: "30px"}}>
+        <header style={{ backgroundColor: "#eb751d", minHeight: "30px",textAlign:"right"}}>
           <p style={{ color: '#fff', padding: "4px" }}>الوظائف</p>
         </header>
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{ height: "650px", overflowY: "auto"}}>
