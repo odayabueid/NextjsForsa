@@ -149,6 +149,9 @@ class Container extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   render() {
     return __jsx("div", {
       className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
+      style: {
+        backgroundColor: "#f8f8f8"
+      },
       __source: {
         fileName: _jsxFileName,
         lineNumber: 9
@@ -260,24 +263,45 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     return __jsx("div", {
       className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
       style: {
-        height: "500px",
-        minHeight: "500px"
+        minHeight: "750px",
+        marginTop: "15px"
       },
       __source: {
         fileName: _jsxFileName,
         lineNumber: 47
       },
       __self: this
-    }, __jsx("div", {
-      className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
+    }, __jsx("header", {
       style: {
-        padding: "0px",
-        height: "200px",
-        overflowY: "auto"
+        backgroundColor: "#eb751d",
+        minHeight: "30px",
+        borderRadius: '5px'
       },
       __source: {
         fileName: _jsxFileName,
         lineNumber: 48
+      },
+      __self: this
+    }, __jsx("p", {
+      style: {
+        color: '#fff',
+        padding: "4px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 49
+      },
+      __self: this
+    }, "Jobs Cards")), __jsx("div", {
+      className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
+      style: {
+        height: "650px",
+        overflowY: "auto",
+        backgroundColor: "#fff"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 51
       },
       __self: this
     }, __jsx(react_infinite_scroller__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -291,26 +315,99 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       loader: __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 61
         },
         __self: this
       }),
       useWindow: false,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 52
       },
       __self: this
     }, this.state.jobsCardArr.map(item => {
       return __jsx("div", {
         key: Math.random(),
         className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
+        style: {
+          padding: "10px 0px 0px 0px",
+          cursor: "pointer"
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64
+          lineNumber: 67
         },
         __self: this
-      }, item.title);
+      }, __jsx("div", {
+        className: "col-xs-3 col-sm-3 col-md-3 col-lg-3",
+        style: {
+          minHeight: "70px",
+          padding: "0px",
+          backgroundImage: `url(${item.images.sm})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: 'center'
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 68
+        },
+        __self: this
+      }), __jsx("div", {
+        className: "col-xs-9 col-sm-9 col-md-9 col-lg-9",
+        style: {
+          border: "1px solid #ccc",
+          minHeight: "70px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 70
+        },
+        __self: this
+      }, __jsx("div", {
+        className: "col-xs-2 col-sm-2 col-md-2 col-lg-2",
+        style: {
+          textAlign: "center",
+          padding: "10px 0px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 72
+        },
+        __self: this
+      }, item.location.title), __jsx("div", {
+        className: "col-xs-10 col-sm-10 col-md-10 col-lg-10",
+        style: {
+          padding: "10px 0px",
+          textAlign: "right"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 75
+        },
+        __self: this
+      }, item.title), __jsx("div", {
+        className: "col-xs-2 col-sm-2 col-md-2 col-lg-2",
+        style: {
+          textAlign: "center"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 78
+        },
+        __self: this
+      }, `# ${item.id}`), __jsx("div", {
+        className: "col-xs-10 col-sm-10 col-md-10 col-lg-10",
+        style: {
+          padding: "0px",
+          textAlign: "right"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 81
+        },
+        __self: this
+      }, `اخر موعد للتقديم : ${item.deadline}`)));
     }))));
   }
 
