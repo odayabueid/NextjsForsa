@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroller';
+import { ClipLoader } from "react-spinners";
 
 
 class JobsCards extends Component {
@@ -9,16 +10,24 @@ class JobsCards extends Component {
     jobsCardArr: [],
     hasMore: true,
     limit: 12,
-    pageNum: 1
+    pageNum: 1,
+    isLoading: false,
+    itemId:''
   }
 
   componentDidMount = () => {
     this.loadMoreJobs()
   }
   loadMoreJobs = () => {
+    if (this.state.isLoading) {
+      return
+    }
     if (!this.state.hasMore) {
       return
     }
+    this.setState({
+      isLoading: true
+    })
     axios.get(`https://api.for9a.com/opportunity/filter?count=${this.state.limit}&page=${this.state.pageNum}&type=29`).then(res => {
       console.log("our res eq", res.data.result.items.length)
       if (res.data.result.items.length < this.state.limit) {
@@ -29,7 +38,8 @@ class JobsCards extends Component {
       this.setState({
         jobsCardArr: [...this.state.jobsCardArr, ...res.data.result.items],
         hasMore: hasMoreStatus,
-        pageNum: this.state.pageNum + 1
+        pageNum: this.state.pageNum + 1,
+        isLoading:false
       }, () => {
         console.log("//////////////////////////////", this.state.jobsCardArr)
       })
@@ -39,47 +49,58 @@ class JobsCards extends Component {
     }).catch(err => {
       console.log(err)
     })
+  }
 
-
+  itemInformation=(item)=>{
+    this.setState({
+      itemId:item.id
+    })
+    this.props.selectCard(item)
   }
   render() {
     return (
-      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{  minHeight: "750px",marginTop:"15px" }}>
-        <header style={{ backgroundColor: "#eb751d", minHeight: "30px", borderRadius: '5px' }}>
-          <p style={{ color: '#fff', padding: "4px" }}>Jobs Cards</p>
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{padding:"0px", minHeight: "680px", marginTop: "15px" ,backgroundColor: "#fff" }}>
+        <header style={{ backgroundColor: "#eb751d", minHeight: "30px"}}>
+          <p style={{ color: '#fff', padding: "4px" }}>الوظائف</p>
         </header>
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{ height: "650px", overflowY: "auto", backgroundColor: "#fff" }}>
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{ height: "650px", overflowY: "auto"}}>
           <InfiniteScroll
             pageStart={0}
             initialLoad={false}
             loadMore={() => {
-              console.log("load more true")
               this.loadMoreJobs()
             }}
             hasMore={this.state.hasMore}
             loader={
-              <div></div>
+              <div style={{textAlign:"center"}}><ClipLoader color="#339eba" loading={this.state.isLoading} /></div>
             }
             useWindow={false}
           >
             {this.state.jobsCardArr.map(item => {
               return (
-                <div key={Math.random()} className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{padding:"10px 0px 0px 0px",cursor:"pointer"}}>
-                  <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3" style={{minHeight:"70px",padding:"0px", backgroundImage:`url(${item.images.sm})` ,backgroundRepeat:"no-repeat",backgroundSize:"cover", backgroundPosition: 'center'}}>
+                <div key={Math.random()} className="col-xs-12 col-sm-12 col-md-12 col-lg-12" onClick={()=>{this.itemInformation(item)}}
+                 style={{ 
+                   padding:"0px",
+                  marginTop:"15px",
+                  cursor: "pointer",
+                  border: "1px solid #ccc",
+                  boxShadow:this.state.itemId == item.id ? "#339eba 0px 0px 10px 0px":'rgb(88,87,87)'
+                  }}>
+                  <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3" style={{ minHeight: "70px", padding: "0px", backgroundImage: `url(${item.images.sm})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: 'center' }}>
                   </div>
-                  <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9" style={{border:"1px solid #ccc",minHeight:"70px"}}>
-                  
-                    <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2" style={{textAlign:"center",padding:"10px 0px"}}>
-                       {item.location.title}
+                  <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9" style={{ minHeight: "70px" }}>
+
+                    <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2" style={{ textAlign: "center", padding: "10px 0px" }}>
+                      {item.location.title}
                     </div>
-                    <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10" style={{padding:"10px 0px",textAlign:"right"}}>
+                    <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10" style={{ padding: "10px 0px", textAlign: "right" }}>
                       {item.title}
                     </div>
-                    <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2" style={{textAlign:"center"}}>
+                    <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2" style={{ textAlign: "center" ,padding:"0px"}}>
                       {`# ${item.id}`}
                     </div>
-                    <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10" style={{padding:"0px",textAlign:"right"}}>
-                        {`اخر موعد للتقديم : ${item.deadline}`}
+                    <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10" style={{ padding: "0px", textAlign: "right" }}>
+                      {`اخر موعد للتقديم : ${item.deadline}`}
                     </div>
                   </div>
 
