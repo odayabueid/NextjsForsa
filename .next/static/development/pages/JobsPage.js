@@ -355,21 +355,7 @@ function (_Component) {
         className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
-        },
-        __self: this
-      }, __jsx(_CardInfo__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        cardSelected: this.state.cardSelected,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 22
-        },
-        __self: this
-      })), __jsx("div", {
-        className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 20
         },
         __self: this
       }, __jsx(_JobsCards__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -378,7 +364,21 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
+          lineNumber: 21
+        },
+        __self: this
+      })), __jsx("div", {
+        className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
+        },
+        __self: this
+      }, __jsx(_CardInfo__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        cardSelected: this.state.cardSelected,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24
         },
         __self: this
       })));
@@ -520,8 +520,6 @@ function (_Component) {
       });
 
       axios__WEBPACK_IMPORTED_MODULE_9___default.a.get("https://api.for9a.com/opportunity/filter?".concat(_this.state.jobId.trim() !== "" ? 'id=' + _this.state.jobId : 'id=', "&count=").concat(_this.state.limit, "&page=").concat(_this.state.pageNum, "&type=29")).then(function (res) {
-        console.log("reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", res.data.result);
-
         if (res.data.result.items.length < _this.state.limit) {
           var hasMoreStatus = false;
         } else {
@@ -565,7 +563,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97
+          lineNumber: 95
         },
         __self: this
       }, __jsx("header", {
@@ -576,7 +574,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98
+          lineNumber: 96
         },
         __self: this
       }, __jsx("p", {
@@ -586,7 +584,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 99
+          lineNumber: 97
         },
         __self: this
       }, "\u0627\u0644\u0648\u0638\u0627\u0626\u0641")), __jsx("div", {
@@ -596,7 +594,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 101
+          lineNumber: 99
         },
         __self: this
       }, __jsx("div", {
@@ -606,7 +604,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 102
+          lineNumber: 100
         },
         __self: this
       }, __jsx("div", {
@@ -617,7 +615,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 103
+          lineNumber: 101
         },
         __self: this
       }, __jsx("input", {
@@ -634,7 +632,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 104
+          lineNumber: 102
         },
         __self: this
       })), this.state.notNumber && __jsx("div", {
@@ -642,21 +640,22 @@ function (_Component) {
         style: {
           maxHeight: "30px",
           marginTop: "15px",
-          maxWidth: "150px"
+          maxWidth: "150px",
+          "float": "right"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107
+          lineNumber: 105
         },
         __self: this
       }, __jsx("p", {
         style: {
-          color: "red",
+          color: "#426d7d",
           marginTop: "7px"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 108
+          lineNumber: 106
         },
         __self: this
       }, "\u0627\u0644\u0631\u062C\u0627\u0621 \u0627\u0644\u0628\u062D\u062B \u0628\u0631\u0642\u0645 \u0627\u0644\u0648\u0638\u064A\u0641\u0629"))), __jsx("div", {
@@ -667,7 +666,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 112
+          lineNumber: 110
         },
         __self: this
       }, __jsx(react_infinite_scroller__WEBPACK_IMPORTED_MODULE_10___default.a, {
@@ -683,7 +682,7 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 121
+            lineNumber: 119
           },
           __self: this
         }, __jsx(react_spinners__WEBPACK_IMPORTED_MODULE_11__["ClipLoader"], {
@@ -691,14 +690,14 @@ function (_Component) {
           loading: this.state.isLoading,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 121
+            lineNumber: 119
           },
           __self: this
         })),
         useWindow: false,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 113
+          lineNumber: 111
         },
         __self: this
       }, this.state.jobsCardArr.map(function (item) {
@@ -717,11 +716,11 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 127
+            lineNumber: 125
           },
           __self: this
         }, __jsx("div", {
-          className: "col-xs-3 col-sm-3 col-md-3 col-lg-3",
+          className: "col-xs-12 col-sm-3 col-md-3 col-lg-3",
           style: {
             minHeight: "70px",
             padding: "0px",
@@ -732,61 +731,61 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 135
+            lineNumber: 133
           },
           __self: this
         }), __jsx("div", {
-          className: "col-xs-9 col-sm-9 col-md-9 col-lg-9",
+          className: "col-xs-12 col-sm-9 col-md-9 col-lg-9",
           style: {
             minHeight: "70px"
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 137
+            lineNumber: 135
           },
           __self: this
         }, __jsx("div", {
-          className: "col-xs-2 col-sm-2 col-md-2 col-lg-2",
+          className: "col-xs-12 col-sm-2 col-md-2 col-lg-2",
           style: {
             textAlign: "center",
             padding: "10px 0px"
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 139
+            lineNumber: 136
           },
           __self: this
-        }, item.location.title), __jsx("div", {
-          className: "col-xs-10 col-sm-10 col-md-10 col-lg-10",
+        }, item.location.title.length > 8 ? "... ".concat(item.location.title.substr(0, 8)) : item.location.title), __jsx("div", {
+          className: "col-xs-12 col-sm-10 col-md-10 col-lg-10",
           style: {
             padding: "10px 0px",
             textAlign: "right"
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 142
+            lineNumber: 139
           },
           __self: this
-        }, item.title), __jsx("div", {
-          className: "col-xs-2 col-sm-2 col-md-2 col-lg-2",
+        }, item.title.length > 40 ? "... ".concat(item.title.substr(0, 40)) : item.title), __jsx("div", {
+          className: "col-xs-12 col-sm-2 col-md-2 col-lg-2",
           style: {
             textAlign: "center",
             padding: "0px"
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 145
+            lineNumber: 142
           },
           __self: this
         }, "# ".concat(item.id)), __jsx("div", {
-          className: "col-xs-10 col-sm-10 col-md-10 col-lg-10",
+          className: "col-xs-12 col-sm-10 col-md-10 col-lg-10",
           style: {
             padding: "0px",
             textAlign: "right"
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 148
+            lineNumber: 145
           },
           __self: this
         }, "\u0627\u062E\u0631 \u0645\u0648\u0639\u062F \u0644\u0644\u062A\u0642\u062F\u064A\u0645 : ".concat(item.deadline))));
