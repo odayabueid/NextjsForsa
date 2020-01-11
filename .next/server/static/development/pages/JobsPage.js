@@ -391,28 +391,28 @@ class Container extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20
-      },
-      __self: this
-    }, __jsx(_JobsCards__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      selectCard: card => this.selectCard(card),
-      __source: {
-        fileName: _jsxFileName,
         lineNumber: 21
-      },
-      __self: this
-    })), __jsx("div", {
-      className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 23
       },
       __self: this
     }, __jsx(_CardInfo__WEBPACK_IMPORTED_MODULE_3__["default"], {
       cardSelected: this.state.cardSelected,
       __source: {
         fileName: _jsxFileName,
+        lineNumber: 22
+      },
+      __self: this
+    })), __jsx("div", {
+      className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
+      __source: {
+        fileName: _jsxFileName,
         lineNumber: 24
+      },
+      __self: this
+    }, __jsx(_JobsCards__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      selectCard: card => this.selectCard(card),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25
       },
       __self: this
     })));
@@ -442,9 +442,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_infinite_scroller__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_infinite_scroller__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_spinners__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-spinners */ "react-spinners");
 /* harmony import */ var react_spinners__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_spinners__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_s_alert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-s-alert */ "react-s-alert");
+/* harmony import */ var react_s_alert__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_s_alert__WEBPACK_IMPORTED_MODULE_5__);
 
 var _jsxFileName = "C:\\Users\\Discovery1\\Desktop\\NextjsForsa\\component\\JobsCards.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 
@@ -460,11 +463,52 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       limit: 12,
       pageNum: 1,
       isLoading: false,
-      itemId: ''
+      itemId: '',
+      jobId: "",
+      notNumber: false
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "componentDidMount", () => {
       this.loadMoreJobs();
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "changeInputHandle", (name, value) => {
+      this.setState({
+        [name]: value
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "pressOnEnter", event => {
+      console.log(event);
+
+      if (event.keyCode === 13 || event.key === "Enter") {
+        if (this.state.jobId.trim() !== "") {
+          if (!isNaN(this.state.jobId)) {
+            this.setState({
+              hasMore: true,
+              pageNum: 1,
+              jobsCardArr: [],
+              notNumber: false
+            }, () => {
+              this.loadMoreJobs();
+            });
+          } else {
+            console.log("enter num");
+            this.setState({
+              notNumber: true
+            });
+          }
+        } else {
+          this.setState({
+            pageNum: 1,
+            jobsCardArr: [],
+            hasMore: true,
+            notNumber: false
+          }, () => {
+            this.loadMoreJobs();
+          });
+        }
+      }
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "loadMoreJobs", () => {
@@ -479,8 +523,8 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       this.setState({
         isLoading: true
       });
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get(`https://api.for9a.com/opportunity/filter?count=${this.state.limit}&page=${this.state.pageNum}&type=29`).then(res => {
-        console.log("our res eq", res.data.result.items.length);
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get(`https://api.for9a.com/opportunity/filter?${this.state.jobId.trim() !== "" ? 'id=' + this.state.jobId : 'id='}&count=${this.state.limit}&page=${this.state.pageNum}&type=29`).then(res => {
+        console.log("reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", res.data.result);
 
         if (res.data.result.items.length < this.state.limit) {
           var hasMoreStatus = false;
@@ -493,11 +537,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
           hasMore: hasMoreStatus,
           pageNum: this.state.pageNum + 1,
           isLoading: false
-        }, () => {
-          console.log("//////////////////////////////", this.state.jobsCardArr);
-        }); // this.setState({
-        //   jobsCardArr:res.data.result.items
-        // })
+        });
       }).catch(err => {
         console.log(err);
       });
@@ -522,7 +562,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 97
       },
       __self: this
     }, __jsx("header", {
@@ -533,7 +573,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 63
+        lineNumber: 98
       },
       __self: this
     }, __jsx("p", {
@@ -543,18 +583,86 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 64
+        lineNumber: 99
       },
       __self: this
     }, "\u0627\u0644\u0648\u0638\u0627\u0626\u0641")), __jsx("div", {
       className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
       style: {
-        height: "650px",
+        height: "660px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 101
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
+      style: {
+        padding: "0px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 102
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "col-xs-6 col-sm-6 col-md-6 col-lg-6",
+      style: {
+        float: 'right',
+        padding: "0px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 103
+      },
+      __self: this
+    }, __jsx("input", {
+      class: "form-control form-control-sm",
+      type: "text",
+      style: {
+        margin: "15px 0px 7px 0px",
+        textAlign: "right"
+      },
+      onKeyPress: this.pressOnEnter,
+      placeholder: "\u0627\u0628\u062D\u062B \u0628\u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0631\u0642\u0645 \u0627\u0644\u0648\u0638\u064A\u0641\u0629",
+      onChange: () => this.changeInputHandle("jobId", event.target.value),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 104
+      },
+      __self: this
+    })), this.state.notNumber && __jsx("div", {
+      class: "col-xs-6 col-sm-6 col-md-6 col-lg-6",
+      style: {
+        maxHeight: "30px",
+        marginTop: "15px",
+        maxWidth: "150px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 107
+      },
+      __self: this
+    }, __jsx("p", {
+      style: {
+        color: "red",
+        marginTop: "7px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 108
+      },
+      __self: this
+    }, "\u0627\u0644\u0631\u062C\u0627\u0621 \u0627\u0644\u0628\u062D\u062B \u0628\u0631\u0642\u0645 \u0627\u0644\u0648\u0638\u064A\u0641\u0629"))), __jsx("div", {
+      className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
+      style: {
+        height: "575px",
         overflowY: "auto"
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 66
+        lineNumber: 112
       },
       __self: this
     }, __jsx(react_infinite_scroller__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -570,7 +678,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 75
+          lineNumber: 121
         },
         __self: this
       }, __jsx(react_spinners__WEBPACK_IMPORTED_MODULE_4__["ClipLoader"], {
@@ -578,14 +686,14 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         loading: this.state.isLoading,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 75
+          lineNumber: 121
         },
         __self: this
       })),
       useWindow: false,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 67
+        lineNumber: 113
       },
       __self: this
     }, this.state.jobsCardArr.map(item => {
@@ -604,7 +712,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81
+          lineNumber: 127
         },
         __self: this
       }, __jsx("div", {
@@ -619,7 +727,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89
+          lineNumber: 135
         },
         __self: this
       }), __jsx("div", {
@@ -629,7 +737,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91
+          lineNumber: 137
         },
         __self: this
       }, __jsx("div", {
@@ -640,7 +748,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 93
+          lineNumber: 139
         },
         __self: this
       }, item.location.title), __jsx("div", {
@@ -651,7 +759,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 96
+          lineNumber: 142
         },
         __self: this
       }, item.title), __jsx("div", {
@@ -662,7 +770,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 99
+          lineNumber: 145
         },
         __self: this
       }, `# ${item.id}`), __jsx("div", {
@@ -673,11 +781,11 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 102
+          lineNumber: 148
         },
         __self: this
       }, `اخر موعد للتقديم : ${item.deadline}`)));
-    }))));
+    })))));
   }
 
 }
@@ -862,6 +970,17 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-infinite-scroller");
+
+/***/ }),
+
+/***/ "react-s-alert":
+/*!********************************!*\
+  !*** external "react-s-alert" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-s-alert");
 
 /***/ }),
 

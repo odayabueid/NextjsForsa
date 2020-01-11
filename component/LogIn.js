@@ -9,9 +9,33 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Link from 'next/link';
+import axios from 'axios';
 
 class LogIn extends Component {
 
+  state = {
+    email: "",
+    password: ""
+  }
+
+  inputHandlerLogIn = (name, value) => {
+    this.setState({
+      [name]: value
+    })
+  }
+  logInForm = (e) => {
+    e.preventDefault();
+    let data = {}
+    data.email = this.state.email
+    data.password = this.state.password
+    axios.post("https://api.for9a.com/u/login", {},{
+      params:data
+    }).then(res => {
+      console.log("reseq", res)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
   render() {
     return (
       <Container component="main" maxWidth="xs" style={{ marginTop: "10%" }}>
@@ -24,6 +48,7 @@ class LogIn extends Component {
           </Avatar>
           <form style={{ width: "100%", marginTop: "15px" }} noValidate>
             <TextField
+              onChange={() => { this.inputHandlerLogIn("email", event.target.value) }}
               variant="outlined"
               margin="normal"
               required
@@ -35,6 +60,7 @@ class LogIn extends Component {
               autoFocus
             />
             <TextField
+              onChange={() => { this.inputHandlerLogIn("password", event.target.value) }}
               variant="outlined"
               margin="normal"
               required
@@ -51,6 +77,7 @@ class LogIn extends Component {
               label="Remember me"
             />
             <Button
+              onClick={this.logInForm}
               type="submit"
               fullWidth
               variant="contained"
