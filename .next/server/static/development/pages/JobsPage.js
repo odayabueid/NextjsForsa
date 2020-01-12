@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -102,13 +102,65 @@ module.exports =
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_spinners__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-spinners */ "react-spinners");
+/* harmony import */ var react_spinners__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_spinners__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_responsive_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-responsive-modal */ "react-responsive-modal");
+/* harmony import */ var react_responsive_modal__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_responsive_modal__WEBPACK_IMPORTED_MODULE_4__);
+
 var _jsxFileName = "C:\\Users\\Discovery1\\Desktop\\NextjsForsa\\component\\CardInfo.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
-class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+
+
+
+class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
+  constructor(...args) {
+    super(...args);
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "state", {
+      user_id: null,
+      isLoading: false,
+      showModal: false
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "componentDidMount", () => {
+      this.setState({
+        user_id: localStorage.getItem('user_id')
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "onCloseModal", () => {
+      this.setState({
+        showModal: false
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "jobApply", () => {
+      this.setState({
+        isLoading: true
+      });
+      let data = {};
+      data.job_id = this.props.cardSelected.id;
+      data.user_id = this.state.user_id;
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("https://api.for9a.com/u/apply", data).then(res => {
+        console.log("res", res);
+        this.setState({
+          isLoading: false,
+          showModal: true
+        });
+        this.props.applyed();
+      }).catch(err => {
+        console.log(err);
+      });
+    });
+  }
+
   render() {
     return __jsx("div", {
       className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
@@ -120,7 +172,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 7
+        lineNumber: 50
       },
       __self: this
     }, __jsx("header", {
@@ -131,7 +183,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 8
+        lineNumber: 51
       },
       __self: this
     }, __jsx("p", {
@@ -141,7 +193,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 9
+        lineNumber: 52
       },
       __self: this
     }, "\u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644")), __jsx("div", {
@@ -151,7 +203,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 11
+        lineNumber: 54
       },
       __self: this
     }, this.props.cardSelected ? __jsx("div", {
@@ -161,7 +213,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 13
+        lineNumber: 56
       },
       __self: this
     }, __jsx("div", {
@@ -173,7 +225,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 14
+        lineNumber: 57
       },
       __self: this
     }, __jsx("img", {
@@ -184,7 +236,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 15
+        lineNumber: 58
       },
       __self: this
     })), __jsx("div", {
@@ -200,7 +252,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 17
+        lineNumber: 60
       },
       __self: this
     }, __jsx("div", {
@@ -211,7 +263,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 18
+        lineNumber: 61
       },
       __self: this
     }, this.props.cardSelected.title), __jsx("div", {
@@ -222,7 +274,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21
+        lineNumber: 64
       },
       __self: this
     }, this.props.cardSelected.desc), __jsx("div", {
@@ -233,21 +285,21 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 67
       },
       __self: this
     }, __jsx("div", {
       className: "col-xs-3 col-sm-3 col-md-3 col-lg-3",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25
+        lineNumber: 68
       },
       __self: this
     }, `البلد : ${this.props.cardSelected.location.title}`), __jsx("div", {
       className: "col-xs-6 col-sm-6 col-md-6 col-lg-6",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28
+        lineNumber: 71
       },
       __self: this
     }, `اخر موعد للتقديم : ${this.props.cardSelected.deadline}`), __jsx("div", {
@@ -257,45 +309,18 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 74
       },
       __self: this
     }, ` رقم الوظيفة: ${this.props.cardSelected.id}`))), __jsx("div", {
       className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
       style: {
-        marginTop: "70px"
+        marginTop: "70px",
+        textAlign: "center"
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 37
-      },
-      __self: this
-    }, __jsx("div", {
-      className: "col-xs-6 col-sm-6 col-md-6 col-lg-6",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 38
-      },
-      __self: this
-    }, __jsx("button", {
-      type: "button",
-      class: "btn",
-      style: {
-        backgroundColor: "#339eba",
-        color: "#fff",
-        minWidth: "80px",
-        float: "right"
-      },
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 39
-      },
-      __self: this
-    }, "\u0627\u0644\u063A\u0627\u0621")), __jsx("div", {
-      className: "col-xs-6 col-sm-6 col-md-6 col-lg-6",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 41
+        lineNumber: 80
       },
       __self: this
     }, __jsx("button", {
@@ -304,14 +329,34 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       style: {
         backgroundColor: "#eb751d",
         color: "#fff",
-        minWidth: "80px"
+        minWidth: "100px"
+      },
+      onClick: this.jobApply,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 81
+      },
+      __self: this
+    }, "\u0642\u062F\u0645 \u0627\u0644\u0627\u0646")), __jsx("div", {
+      className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
+      style: {
+        marginTop: "10px",
+        textAlign: "center"
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 83
       },
       __self: this
-    }, "\u0642\u062F\u0645 \u0627\u0644\u0627\u0646")))) : __jsx("div", {
+    }, __jsx(react_spinners__WEBPACK_IMPORTED_MODULE_3__["ClipLoader"], {
+      color: "#339eba",
+      loading: this.state.isLoading,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 84
+      },
+      __self: this
+    }))) : __jsx("div", {
       className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
       style: {
         padding: "0px",
@@ -320,16 +365,68 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 88
       },
       __self: this
     }, __jsx("h4", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 89
       },
       __self: this
-    }, " \u0627\u0644\u0631\u062C\u0627\u0621 \u0627\u062E\u062A\u064A\u0627\u0631 \u0648\u0638\u064A\u0641\u0629 \u0644\u0627\u0638\u0647\u0627\u0631 \u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644"))));
+    }, " \u0627\u0644\u0631\u062C\u0627\u0621 \u0627\u062E\u062A\u064A\u0627\u0631 \u0648\u0638\u064A\u0641\u0629 \u0644\u0627\u0638\u0647\u0627\u0631 \u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644"), __jsx("div", {
+      className: "col-xs-12 cols-m-12 col-md-12 col-lg-12",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 90
+      },
+      __self: this
+    }, __jsx(react_responsive_modal__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      open: this.state.showModal,
+      onClose: this.onCloseModal,
+      center: true,
+      closeOnEsc: true,
+      showCloseIcon: true,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 91
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
+      style: {
+        padding: "0px",
+        minHeight: "150px",
+        minWidth: "600px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 92
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
+      style: {
+        padding: "0px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 93
+      },
+      __self: this
+    }, __jsx("p", {
+      style: {
+        textAlign: "center",
+        paddingTop: "10%",
+        fontSize: "23px",
+        color: "#339eba"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 94
+      },
+      __self: this
+    }, "\u062A\u0645\u062A \u0639\u0645\u0644\u064A\u0629 \u0627\u0644\u062A\u0642\u062F\u064A\u0645 \u0628\u0646\u062C\u0627\u062D \u0627\u0633\u0631\u0629 \u0641\u0631\u0635\u0629 \u062A\u062A\u0645\u0646\u0649 \u0644\u0643 \u0627\u0644\u062A\u0648\u0641\u064A\u0642 \u0641\u064A \u062D\u064A\u0627\u062A\u0643 \u0627\u0644\u0645\u0647\u0646\u064A\u0629"))))))));
   }
 
 }
@@ -352,9 +449,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _JobsCards__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./JobsCards */ "./component/JobsCards.js");
 /* harmony import */ var _CardInfo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CardInfo */ "./component/CardInfo.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
 
 var _jsxFileName = "C:\\Users\\Discovery1\\Desktop\\NextjsForsa\\component\\Container.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 
@@ -373,6 +473,21 @@ class Container extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         cardSelected: card
       });
     });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "redirectToSignIn", () => {
+      next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push('/about');
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "signOut", () => {
+      localStorage.removeItem('user_id');
+      this.redirectToSignIn();
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "applyed", () => {
+      this.setState({
+        cardSelected: null
+      });
+    });
   }
 
   render() {
@@ -384,38 +499,64 @@ class Container extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 19
+        lineNumber: 35
       },
       __self: this
     }, __jsx("div", {
       className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20
+        lineNumber: 36
       },
       __self: this
     }, __jsx(_JobsCards__WEBPACK_IMPORTED_MODULE_2__["default"], {
       selectCard: card => this.selectCard(card),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21
+        lineNumber: 37
       },
       __self: this
     })), __jsx("div", {
       className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 39
       },
       __self: this
     }, __jsx(_CardInfo__WEBPACK_IMPORTED_MODULE_3__["default"], {
       cardSelected: this.state.cardSelected,
+      applyed: this.applyed,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 40
       },
       __self: this
-    })));
+    })), __jsx("div", {
+      className: "col-xs-12 col-sm-12 col-md-12 col-lg-12",
+      style: {
+        textAlign: "center",
+        marginTop: "10px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 42
+      },
+      __self: this
+    }, __jsx("button", {
+      type: "button",
+      class: "btn",
+      style: {
+        backgroundColor: "#426d7d",
+        color: "#fff",
+        minWidth: "100px"
+      },
+      onClick: this.signOut,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 43
+      },
+      __self: this
+    }, "\u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u062E\u0631\u0648\u062C")));
   }
 
 }
@@ -834,9 +975,9 @@ function _defineProperty(obj, key, value) {
 
 /***/ }),
 
-/***/ "./pages/JobsPage.js":
+/***/ "./pages/jobspage.js":
 /*!***************************!*\
-  !*** ./pages/JobsPage.js ***!
+  !*** ./pages/jobspage.js ***!
   \***************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -848,7 +989,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../component/Container */ "./component/Container.js");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/head */ "next/head");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "C:\\Users\\Discovery1\\Desktop\\NextjsForsa\\pages\\JobsPage.js";
+var _jsxFileName = "C:\\Users\\Discovery1\\Desktop\\NextjsForsa\\pages\\jobspage.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -905,14 +1046,14 @@ class JobsPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 /***/ }),
 
-/***/ 3:
+/***/ 5:
 /*!*********************************!*\
-  !*** multi ./pages/JobsPage.js ***!
+  !*** multi ./pages/jobspage.js ***!
   \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Discovery1\Desktop\NextjsForsa\pages\JobsPage.js */"./pages/JobsPage.js");
+module.exports = __webpack_require__(/*! C:\Users\Discovery1\Desktop\NextjsForsa\pages\jobspage.js */"./pages/jobspage.js");
 
 
 /***/ }),
@@ -950,6 +1091,17 @@ module.exports = require("next/head");
 
 /***/ }),
 
+/***/ "next/router":
+/*!******************************!*\
+  !*** external "next/router" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
+
+/***/ }),
+
 /***/ "react":
 /*!************************!*\
   !*** external "react" ***!
@@ -969,6 +1121,17 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-infinite-scroller");
+
+/***/ }),
+
+/***/ "react-responsive-modal":
+/*!*****************************************!*\
+  !*** external "react-responsive-modal" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-responsive-modal");
 
 /***/ }),
 
@@ -995,4 +1158,4 @@ module.exports = require("react-spinners");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=JobsPage.js.map
+//# sourceMappingURL=jobspage.js.map

@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Link from 'next/link';
 import axios from 'axios';
+import Router, { useRouter } from 'next/router';
+import { ClipLoader } from "react-spinners";
 
 class SignUp extends Component {
 
@@ -17,7 +19,9 @@ class SignUp extends Component {
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
+    password: "",
+    emptyField: false,
+    isLoading: false
   }
 
   inputHandler = (name, value) => {
@@ -25,39 +29,59 @@ class SignUp extends Component {
       [name]: value
     }, () => console.log("stae", this.state.password))
   }
-  signUpForm = (e) => {
 
+  redirecToLogIn = () => {
+    Router.push('/about')
+  }
+
+  signUpForm = (e) => {
+    this.setState({
+      isLoading: true
+    })
     e.preventDefault();
+
     var data = {}
     data.first_name = this.state.firstName
     data.last_name = this.state.lastName
     data.email = this.state.email
     data.password = this.state.password
-    console.log(data)
-    axios.post("https://api.for9a.com/u/register", data).then(res => {
-      console.log("reseq", res)
-    }).catch(err => {
-      console.log(err)
-    })
-    // axios({
-    //   method: 'post',
-    //   url: 'https://api.for9a.com/u/register',
-    //   data: data
-    // }).then(res=>{
-    //     console.log("reseq",res)
-
-    // }).catch(err=>{
-    //   console.log(err)
-    // })
+    if (this.state.firstName.trim() !== "" && this.state.lastName.trim() !== "" && this.state.email.trim() != "" && this.state.password.trim() !== "") {
+      axios.post("https://api.for9a.com/u/register", data).then(res => {
+        console.log(res)
+        this.redirecToLogIn()
+        this.setState({
+          isLoading: false,
+          emptyField: false
+        })
+      }).catch(err => {
+        console.log(err)
+      })
+    } else {
+      this.setState({
+        emptyField: true,
+        isLoading: false,
+      })
+    }
   }
+
 
   render() {
     return (
-      <Container component="main" maxWidth="xs" style={{ marginTop: "10%" }}>
+    
+      <Container component="main" maxWidth="xs" style={{ marginTop: "5%" }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <Typography component="h1" variant="h4">
+          <Grid container justify="flex-start">
+            <Grid item xs={12} sm={6} style={{ minHeight: "50px" }}>
+              {this.state.emptyField &&
+                <div class="alert alert-info" role="alert" style={{ minHeight: "50px", margin: "0px",backgroundColor:"#339eba",color:"#fff" }}>
+                  الرجاء ادخال كامل الحقول للمتابعه
+              </div>
+              }
+            </Grid>
+          </Grid>
+          <Typography component="h1" variant="h4" style={{marginTop:"10px"}}>
             Sign up
-        </Typography>
+          </Typography>
           <Avatar style={{ marginTop: "15px" }}>
             <LockOutlinedIcon />
           </Avatar>
@@ -126,6 +150,7 @@ class SignUp extends Component {
               fullWidth
               variant="contained"
               color="primary"
+              style={{backgroundColor:"#eb751d"}}
             >
               Sign Up
           </Button>
@@ -137,6 +162,11 @@ class SignUp extends Component {
               </Grid>
             </Grid>
           </form>
+          <Grid container justify="center">
+            <Grid item style={{ marginTop: "10px" }}>
+              <ClipLoader color="#339eba" loading={this.state.isLoading} />
+            </Grid>
+          </Grid>
         </div>
       </Container>
     );

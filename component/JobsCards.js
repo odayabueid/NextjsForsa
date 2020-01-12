@@ -15,7 +15,7 @@ class JobsCards extends Component {
     isLoading: false,
     itemId: '',
     jobId: "",
-    notNumber:false
+    notNumber:false,
   }
 
   componentDidMount = () => {

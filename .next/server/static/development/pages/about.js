@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -127,9 +127,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var react_spinners__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-spinners */ "react-spinners");
+/* harmony import */ var react_spinners__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(react_spinners__WEBPACK_IMPORTED_MODULE_14__);
 
 var _jsxFileName = "C:\\Users\\Discovery1\\Desktop\\NextjsForsa\\component\\LogIn.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
 
 
 
@@ -149,7 +155,9 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "state", {
       email: "",
-      password: ""
+      password: "",
+      emptyFieldLogin: false,
+      isLoading: false
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "inputHandlerLogIn", (name, value) => {
@@ -158,18 +166,36 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       });
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "redirecToJobsCards", () => {
+      next_router__WEBPACK_IMPORTED_MODULE_13___default.a.push('/jobspage');
+    });
+
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "logInForm", e => {
+      this.setState({
+        isLoading: true
+      });
       e.preventDefault();
       let data = {};
-      data.email = this.state.email;
-      data.password = this.state.password;
-      axios__WEBPACK_IMPORTED_MODULE_12___default.a.post("https://api.for9a.com/u/login", {}, {
-        params: data
-      }).then(res => {
-        console.log("reseq", res);
-      }).catch(err => {
-        console.log(err);
-      });
+      data.first_name = this.state.email;
+      data.first_name = this.state.password;
+
+      if (this.state.email.trim() !== "" && this.state.password.trim() !== "") {
+        axios__WEBPACK_IMPORTED_MODULE_12___default.a.post("https://api.for9a.com/u/login", data).then(res => {
+          this.redirecToJobsCards();
+          localStorage.setItem('user_id', res.data.user.id);
+          this.setState({
+            isLoading: false,
+            emptyFieldLogin: false
+          });
+        }).catch(err => {
+          console.log(err);
+        });
+      } else {
+        this.setState({
+          emptyFieldLogin: true,
+          isLoading: false
+        });
+      }
     });
   }
 
@@ -178,11 +204,11 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       component: "main",
       maxWidth: "xs",
       style: {
-        marginTop: "10%"
+        marginTop: "6%"
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 41
+        lineNumber: 61
       },
       __self: this
     }, __jsx("div", {
@@ -193,15 +219,59 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 62
       },
       __self: this
-    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
+      container: true,
+      justify: "flex-start",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 63
+      },
+      __self: this
+    }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
+      item: true,
+      xs: 12,
+      sm: 6,
+      style: {
+        minHeight: "50px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 64
+      },
+      __self: this
+    }, this.state.emptyFieldLogin && __jsx("div", {
+      class: "alert alert-info",
+      role: "alert",
+      style: {
+        minHeight: "50px",
+        margin: "0px",
+        backgroundColor: "#339eba",
+        color: "#fff",
+        borderRadius: "5px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 66
+      },
+      __self: this
+    }, __jsx("p", {
+      style: {
+        padding: "16px 0px 0px 11px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 67
+      },
+      __self: this
+    }, "\u0627\u0644\u0631\u062C\u0627\u0621 \u0627\u062F\u062E\u0627\u0644 \u0643\u0627\u0645\u0644 \u0627\u0644\u062D\u0642\u0648\u0644 \u0644\u0644\u0645\u062A\u0627\u0628\u0639\u0647")))), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9___default.a, {
       component: "h1",
       variant: "h4",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43
+        lineNumber: 74
       },
       __self: this
     }, "Log In"), __jsx(_material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -210,13 +280,13 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 46
+        lineNumber: 77
       },
       __self: this
     }, __jsx(_material_ui_icons_LockOutlined__WEBPACK_IMPORTED_MODULE_8___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47
+        lineNumber: 78
       },
       __self: this
     })), __jsx("form", {
@@ -227,7 +297,7 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       noValidate: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 80
       },
       __self: this
     }, __jsx(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -245,7 +315,7 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       autoFocus: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 50
+        lineNumber: 81
       },
       __self: this
     }), __jsx(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -263,7 +333,7 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       autoComplete: "current-password",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 93
       },
       __self: this
     }), __jsx(_material_ui_core_FormControlLabel__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -272,7 +342,7 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         color: "primary",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 75
+          lineNumber: 106
         },
         __self: this
       }),
@@ -282,7 +352,7 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       label: "Remember me",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 74
+        lineNumber: 105
       },
       __self: this
     }), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -291,16 +361,19 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       fullWidth: true,
       variant: "contained",
       color: "primary",
+      style: {
+        backgroundColor: "#eb751d"
+      },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 79
+        lineNumber: 110
       },
       __self: this
     }, "Log In"), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
       container: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 88
+        lineNumber: 120
       },
       __self: this
     }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -311,7 +384,7 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 89
+        lineNumber: 121
       },
       __self: this
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_11___default.a, {
@@ -319,7 +392,7 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       variant: "body2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 90
+        lineNumber: 122
       },
       __self: this
     }, "Forgot password?")), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -329,17 +402,43 @@ class LogIn extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 94
+        lineNumber: 126
       },
       __self: this
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_11___default.a, {
       href: "/index",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 95
+        lineNumber: 127
       },
       __self: this
-    }, "Don't have an account? Sign Up"))))));
+    }, "Don't have an account? Sign Up")))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
+      container: true,
+      justify: "center",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 133
+      },
+      __self: this
+    }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
+      item: true,
+      style: {
+        marginTop: "10px"
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 134
+      },
+      __self: this
+    }, __jsx(react_spinners__WEBPACK_IMPORTED_MODULE_14__["ClipLoader"], {
+      color: "#339eba",
+      loading: this.state.isLoading,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 135
+      },
+      __self: this
+    })))));
   }
 
 }
@@ -2239,7 +2338,7 @@ class About extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/about.js ***!
   \******************************/
@@ -2471,6 +2570,17 @@ module.exports = require("core-js/library/fn/weak-map");
 
 /***/ }),
 
+/***/ "next/router":
+/*!******************************!*\
+  !*** external "next/router" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
+
+/***/ }),
+
 /***/ "prop-types":
 /*!*****************************!*\
   !*** external "prop-types" ***!
@@ -2512,6 +2622,17 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-is");
+
+/***/ }),
+
+/***/ "react-spinners":
+/*!*********************************!*\
+  !*** external "react-spinners" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-spinners");
 
 /***/ }),
 
