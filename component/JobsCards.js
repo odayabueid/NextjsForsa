@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroller';
 import { ClipLoader } from "react-spinners";
-import Alert from 'react-s-alert';
-
 
 class JobsCards extends Component {
-
   state = {
     jobsCardArr: [],
     hasMore: true,
@@ -17,17 +14,18 @@ class JobsCards extends Component {
     jobId: "",
     notNumber:false,
   }
-
+//to load the jobs when render the page
   componentDidMount = () => {
     this.loadMoreJobs()
   }
+//handle the inputs in text field 
   changeInputHandle = (name, value) => {
     this.setState({
       [name]: value
     })
   }
+//click enter in searchfield to filter bu job id
   pressOnEnter = (event) => {
-    console.log(event)
     if (event.keyCode === 13 || event.key === "Enter") {
       if (this.state.jobId.trim() !== "") {
         if (!isNaN(this.state.jobId)) {
@@ -40,8 +38,7 @@ class JobsCards extends Component {
             this.loadMoreJobs()
           })
         } else {
-          console.log("enter num")
-          this.setState({
+            this.setState({
             notNumber:true
           })
         }
@@ -57,6 +54,7 @@ class JobsCards extends Component {
       }
     }
   }
+//to loadmore jobs 
   loadMoreJobs = () => {
     if (this.state.isLoading) {
       return
@@ -90,6 +88,7 @@ class JobsCards extends Component {
     })
     this.props.selectCard(item)
   }
+
   render() {
     return (
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{ padding: "0px", minHeight: "680px", marginTop: "15px", backgroundColor: "#fff" }}>
@@ -104,7 +103,7 @@ class JobsCards extends Component {
             {this.state.notNumber &&
               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"style={{maxHeight:"30px",marginTop:"15px",maxWidth:"150px",float:"right"}}>
                 <p style={{color:"#426d7d",marginTop:"7px"}}>الرجاء البحث برقم الوظيفة</p>
-            </div>
+              </div>
             }
           </div>
           <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{ height: "575px", overflowY: "auto"}}>
@@ -146,15 +145,12 @@ class JobsCards extends Component {
                         {`اخر موعد للتقديم : ${item.deadline}`}
                       </div>
                     </div>
-
                   </div>
                 )
               })}
-
             </InfiniteScroll>
           </div>
         </div>
-
       </div>
     )
   }

@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -149,7 +149,6 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       data.job_id = this.props.cardSelected.id;
       data.user_id = this.state.user_id;
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("https://api.for9a.com/u/apply", data).then(res => {
-        console.log("res", res);
         this.setState({
           isLoading: false,
           showModal: true
@@ -172,7 +171,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 50
+        lineNumber: 45
       },
       __self: this
     }, __jsx("header", {
@@ -183,7 +182,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 51
+        lineNumber: 46
       },
       __self: this
     }, __jsx("p", {
@@ -193,7 +192,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 52
+        lineNumber: 47
       },
       __self: this
     }, "\u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644")), __jsx("div", {
@@ -203,7 +202,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 54
+        lineNumber: 49
       },
       __self: this
     }, this.props.cardSelected ? __jsx("div", {
@@ -213,7 +212,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 56
+        lineNumber: 51
       },
       __self: this
     }, __jsx("div", {
@@ -225,7 +224,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 57
+        lineNumber: 52
       },
       __self: this
     }, __jsx("img", {
@@ -236,7 +235,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 58
+        lineNumber: 53
       },
       __self: this
     })), __jsx("div", {
@@ -252,7 +251,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 60
+        lineNumber: 55
       },
       __self: this
     }, __jsx("div", {
@@ -263,7 +262,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 61
+        lineNumber: 56
       },
       __self: this
     }, this.props.cardSelected.title), __jsx("div", {
@@ -274,7 +273,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 64
+        lineNumber: 59
       },
       __self: this
     }, this.props.cardSelected.desc), __jsx("div", {
@@ -285,21 +284,21 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 67
+        lineNumber: 62
       },
       __self: this
     }, __jsx("div", {
       className: "col-xs-3 col-sm-3 col-md-3 col-lg-3",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 68
+        lineNumber: 63
       },
       __self: this
     }, `البلد : ${this.props.cardSelected.location.title}`), __jsx("div", {
       className: "col-xs-6 col-sm-6 col-md-6 col-lg-6",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 71
+        lineNumber: 66
       },
       __self: this
     }, `اخر موعد للتقديم : ${this.props.cardSelected.deadline}`), __jsx("div", {
@@ -309,7 +308,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 74
+        lineNumber: 69
       },
       __self: this
     }, ` رقم الوظيفة: ${this.props.cardSelected.id}`))), __jsx("div", {
@@ -320,7 +319,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 80
+        lineNumber: 74
       },
       __self: this
     }, __jsx("button", {
@@ -334,7 +333,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       onClick: this.jobApply,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 81
+        lineNumber: 75
       },
       __self: this
     }, "\u0642\u062F\u0645 \u0627\u0644\u0627\u0646")), __jsx("div", {
@@ -345,7 +344,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 83
+        lineNumber: 77
       },
       __self: this
     }, __jsx(react_spinners__WEBPACK_IMPORTED_MODULE_3__["ClipLoader"], {
@@ -353,7 +352,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       loading: this.state.isLoading,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 84
+        lineNumber: 78
       },
       __self: this
     }))) : __jsx("div", {
@@ -365,20 +364,20 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 88
+        lineNumber: 82
       },
       __self: this
     }, __jsx("h4", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 89
+        lineNumber: 83
       },
       __self: this
     }, " \u0627\u0644\u0631\u062C\u0627\u0621 \u0627\u062E\u062A\u064A\u0627\u0631 \u0648\u0638\u064A\u0641\u0629 \u0644\u0627\u0638\u0647\u0627\u0631 \u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644"), __jsx("div", {
       className: "col-xs-12 cols-m-12 col-md-12 col-lg-12",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 90
+        lineNumber: 84
       },
       __self: this
     }, __jsx(react_responsive_modal__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -389,7 +388,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       showCloseIcon: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 91
+        lineNumber: 85
       },
       __self: this
     }, __jsx("div", {
@@ -401,7 +400,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 92
+        lineNumber: 86
       },
       __self: this
     }, __jsx("div", {
@@ -411,7 +410,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 93
+        lineNumber: 87
       },
       __self: this
     }, __jsx("p", {
@@ -423,7 +422,7 @@ class CardInfo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 94
+        lineNumber: 88
       },
       __self: this
     }, "\u062A\u0645\u062A \u0639\u0645\u0644\u064A\u0629 \u0627\u0644\u062A\u0642\u062F\u064A\u0645 \u0628\u0646\u062C\u0627\u062D \u0627\u0633\u0631\u0629 \u0641\u0631\u0635\u0629 \u062A\u062A\u0645\u0646\u0649 \u0644\u0643 \u0627\u0644\u062A\u0648\u0641\u064A\u0642 \u0641\u064A \u062D\u064A\u0627\u062A\u0643 \u0627\u0644\u0645\u0647\u0646\u064A\u0629"))))))));
@@ -468,7 +467,6 @@ class Container extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "selectCard", card => {
-      console.log("my item card eq", card);
       this.setState({
         cardSelected: card
       });
@@ -499,28 +497,28 @@ class Container extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 35
+        lineNumber: 34
       },
       __self: this
     }, __jsx("div", {
       className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 36
+        lineNumber: 35
       },
       __self: this
     }, __jsx(_JobsCards__WEBPACK_IMPORTED_MODULE_2__["default"], {
       selectCard: card => this.selectCard(card),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 37
+        lineNumber: 36
       },
       __self: this
     })), __jsx("div", {
       className: "col-xs-12 col-sm-12 col-md-6 col-lg-6",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 39
+        lineNumber: 38
       },
       __self: this
     }, __jsx(_CardInfo__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -528,7 +526,7 @@ class Container extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       applyed: this.applyed,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 40
+        lineNumber: 39
       },
       __self: this
     })), __jsx("div", {
@@ -539,7 +537,7 @@ class Container extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 41
       },
       __self: this
     }, __jsx("button", {
@@ -553,7 +551,7 @@ class Container extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       onClick: this.signOut,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43
+        lineNumber: 42
       },
       __self: this
     }, "\u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u062E\u0631\u0648\u062C")));
@@ -583,12 +581,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_infinite_scroller__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_infinite_scroller__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_spinners__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-spinners */ "react-spinners");
 /* harmony import */ var react_spinners__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_spinners__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_s_alert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-s-alert */ "react-s-alert");
-/* harmony import */ var react_s_alert__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_s_alert__WEBPACK_IMPORTED_MODULE_5__);
 
 var _jsxFileName = "C:\\Users\\Discovery1\\Desktop\\NextjsForsa\\component\\JobsCards.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
-
 
 
 
@@ -620,8 +615,6 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "pressOnEnter", event => {
-      console.log(event);
-
       if (event.keyCode === 13 || event.key === "Enter") {
         if (this.state.jobId.trim() !== "") {
           if (!isNaN(this.state.jobId)) {
@@ -634,7 +627,6 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
               this.loadMoreJobs();
             });
           } else {
-            console.log("enter num");
             this.setState({
               notNumber: true
             });
@@ -701,7 +693,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 95
+        lineNumber: 94
       },
       __self: this
     }, __jsx("header", {
@@ -712,7 +704,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 96
+        lineNumber: 95
       },
       __self: this
     }, __jsx("p", {
@@ -722,7 +714,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 97
+        lineNumber: 96
       },
       __self: this
     }, "\u0627\u0644\u0648\u0638\u0627\u0626\u0641")), __jsx("div", {
@@ -732,7 +724,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 99
+        lineNumber: 98
       },
       __self: this
     }, __jsx("div", {
@@ -742,7 +734,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 100
+        lineNumber: 99
       },
       __self: this
     }, __jsx("div", {
@@ -753,7 +745,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 101
+        lineNumber: 100
       },
       __self: this
     }, __jsx("input", {
@@ -768,7 +760,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       onChange: () => this.changeInputHandle("jobId", event.target.value),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 102
+        lineNumber: 101
       },
       __self: this
     })), this.state.notNumber && __jsx("div", {
@@ -781,7 +773,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 105
+        lineNumber: 104
       },
       __self: this
     }, __jsx("p", {
@@ -791,7 +783,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 106
+        lineNumber: 105
       },
       __self: this
     }, "\u0627\u0644\u0631\u062C\u0627\u0621 \u0627\u0644\u0628\u062D\u062B \u0628\u0631\u0642\u0645 \u0627\u0644\u0648\u0638\u064A\u0641\u0629"))), __jsx("div", {
@@ -802,7 +794,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 110
+        lineNumber: 109
       },
       __self: this
     }, __jsx(react_infinite_scroller__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -818,7 +810,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 119
+          lineNumber: 118
         },
         __self: this
       }, __jsx(react_spinners__WEBPACK_IMPORTED_MODULE_4__["ClipLoader"], {
@@ -826,14 +818,14 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         loading: this.state.isLoading,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 119
+          lineNumber: 118
         },
         __self: this
       })),
       useWindow: false,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 111
+        lineNumber: 110
       },
       __self: this
     }, this.state.jobsCardArr.map(item => {
@@ -852,7 +844,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 125
+          lineNumber: 124
         },
         __self: this
       }, __jsx("div", {
@@ -867,7 +859,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 133
+          lineNumber: 132
         },
         __self: this
       }), __jsx("div", {
@@ -877,7 +869,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 135
+          lineNumber: 134
         },
         __self: this
       }, __jsx("div", {
@@ -888,7 +880,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 136
+          lineNumber: 135
         },
         __self: this
       }, item.location.title.length > 8 ? `... ${item.location.title.substr(0, 8)}` : item.location.title), __jsx("div", {
@@ -899,7 +891,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 139
+          lineNumber: 138
         },
         __self: this
       }, item.title.length > 40 ? `... ${item.title.substr(0, 40)}` : item.title), __jsx("div", {
@@ -910,7 +902,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 142
+          lineNumber: 141
         },
         __self: this
       }, `# ${item.id}`), __jsx("div", {
@@ -921,7 +913,7 @@ class JobsCards extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 145
+          lineNumber: 144
         },
         __self: this
       }, `اخر موعد للتقديم : ${item.deadline}`)));
@@ -1000,19 +992,19 @@ class JobsPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 9
+        lineNumber: 8
       },
       __self: this
     }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 10
+        lineNumber: 9
       },
       __self: this
     }, __jsx("title", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 11
+        lineNumber: 10
       },
       __self: this
     }, "Job Website"), __jsx("link", {
@@ -1022,19 +1014,19 @@ class JobsPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       crossorigin: "anonymous",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 12
+        lineNumber: 11
       },
       __self: this
     })), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 14
+        lineNumber: 13
       },
       __self: this
     }, __jsx(_component_Container__WEBPACK_IMPORTED_MODULE_1__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 17
+        lineNumber: 14
       },
       __self: this
     })));
@@ -1046,7 +1038,7 @@ class JobsPage extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!*********************************!*\
   !*** multi ./pages/jobspage.js ***!
   \*********************************/
@@ -1132,17 +1124,6 @@ module.exports = require("react-infinite-scroller");
 /***/ (function(module, exports) {
 
 module.exports = require("react-responsive-modal");
-
-/***/ }),
-
-/***/ "react-s-alert":
-/*!********************************!*\
-  !*** external "react-s-alert" ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-s-alert");
 
 /***/ }),
 

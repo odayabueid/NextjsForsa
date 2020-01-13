@@ -4,37 +4,32 @@ import { ClipLoader } from "react-spinners";
 import Modal from 'react-responsive-modal';
 
 class CardInfo extends Component {
-
   state = {
     user_id: null,
     isLoading: false,
     showModal: false
   }
-
+// to get the user_id from localStorage when render the page
   componentDidMount = () => {
     this.setState({
       user_id: localStorage.getItem('user_id')
     })
   }
-
+// when close the modal
   onCloseModal = () => {
     this.setState({
       showModal: false
     })
   }
-
+// when apply on job
   jobApply = () => {
-
     this.setState({
       isLoading: true
     })
-
     let data = {}
     data.job_id = this.props.cardSelected.id
     data.user_id = this.state.user_id
-
     axios.post("https://api.for9a.com/u/apply", data).then(res => {
-      console.log("res", res)
       this.setState({
         isLoading: false,
         showModal: true
@@ -75,7 +70,6 @@ class CardInfo extends Component {
                     {` رقم الوظيفة: ${this.props.cardSelected.id}`}
                   </div>
                 </div>
-
               </div>
               <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{ marginTop: "70px", textAlign: "center" }}>
                 <button type="button" class="btn" style={{ backgroundColor: "#eb751d", color: "#fff", minWidth: "100px" }} onClick={this.jobApply}>قدم الان</button>

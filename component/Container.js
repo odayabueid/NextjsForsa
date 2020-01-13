@@ -7,26 +7,25 @@ class Container extends Component {
   state = {
     cardSelected: null
   }
-
+// when select card
   selectCard = (card) => {
-    console.log("my item card eq", card)
     this.setState({
       cardSelected: card
     })
   }
-
-  redirectToSignIn =()=>{
+// redirect to about page(login)
+  redirectToSignIn = () => {
     Router.push('/about')
   }
-
-  signOut=()=>{
+//when signOut clear the user_id from local storage and redirect to login
+  signOut = () => {
     localStorage.removeItem('user_id')
     this.redirectToSignIn()
   }
-
-  applyed=()=>{
+// when applied to job hide the job info
+  applyed = () => {
     this.setState({
-      cardSelected:null
+      cardSelected: null
     })
   }
 
@@ -39,8 +38,8 @@ class Container extends Component {
         <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
           <CardInfo cardSelected={this.state.cardSelected} applyed={this.applyed} />
         </div>
-        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{textAlign:"center",marginTop:"10px"}}>
-          <button type="button" class="btn" style={{backgroundColor:"#426d7d",color: "#fff", minWidth: "100px" }} onClick={this.signOut}>تسجيل الخروج</button>
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{ textAlign: "center", marginTop: "10px" }}>
+          <button type="button" class="btn" style={{ backgroundColor: "#426d7d", color: "#fff", minWidth: "100px" }} onClick={this.signOut}>تسجيل الخروج</button>
         </div>
       </div>
     )

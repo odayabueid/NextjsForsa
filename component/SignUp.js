@@ -14,7 +14,6 @@ import Router, { useRouter } from 'next/router';
 import { ClipLoader } from "react-spinners";
 
 class SignUp extends Component {
-
   state = {
     firstName: "",
     lastName: "",
@@ -23,23 +22,22 @@ class SignUp extends Component {
     emptyField: false,
     isLoading: false
   }
-
+//handle the inputs in text field 
   inputHandler = (name, value) => {
     this.setState({
       [name]: value
-    }, () => console.log("stae", this.state.password))
+    })
   }
-
+// redirect to about page(LogIn)
   redirecToLogIn = () => {
     Router.push('/about')
   }
-
+// to signUp
   signUpForm = (e) => {
     this.setState({
       isLoading: true
     })
     e.preventDefault();
-
     var data = {}
     data.first_name = this.state.firstName
     data.last_name = this.state.lastName
@@ -47,7 +45,6 @@ class SignUp extends Component {
     data.password = this.state.password
     if (this.state.firstName.trim() !== "" && this.state.lastName.trim() !== "" && this.state.email.trim() != "" && this.state.password.trim() !== "") {
       axios.post("https://api.for9a.com/u/register", data).then(res => {
-        console.log(res)
         this.redirecToLogIn()
         this.setState({
           isLoading: false,
@@ -64,22 +61,20 @@ class SignUp extends Component {
     }
   }
 
-
   render() {
     return (
-    
       <Container component="main" maxWidth="xs" style={{ marginTop: "5%" }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <Grid container justify="flex-start">
             <Grid item xs={12} sm={6} style={{ minHeight: "50px" }}>
               {this.state.emptyField &&
-                <div class="alert alert-info" role="alert" style={{ minHeight: "50px", margin: "0px",backgroundColor:"#339eba",color:"#fff" }}>
+                <div class="alert alert-info" role="alert" style={{ minHeight: "50px", margin: "0px", backgroundColor: "#339eba", color: "#fff" }}>
                   الرجاء ادخال كامل الحقول للمتابعه
-              </div>
+                </div>
               }
             </Grid>
           </Grid>
-          <Typography component="h1" variant="h4" style={{marginTop:"10px"}}>
+          <Typography component="h1" variant="h4" style={{ marginTop: "10px" }}>
             Sign up
           </Typography>
           <Avatar style={{ marginTop: "15px" }}>
@@ -150,15 +145,15 @@ class SignUp extends Component {
               fullWidth
               variant="contained"
               color="primary"
-              style={{backgroundColor:"#eb751d"}}
+              style={{ backgroundColor: "#eb751d" }}
             >
               Sign Up
-          </Button>
+            </Button>
             <Grid container justify="flex-end">
               <Grid item style={{ marginTop: "10px" }}>
                 <Link href="/about">
                   Already have an account? Sign in
-              </Link>
+                </Link>
               </Grid>
             </Grid>
           </form>
